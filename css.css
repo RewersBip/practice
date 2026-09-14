@@ -1,0 +1,63 @@
+body { 
+            font-family: sans-serif; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f4f7fb; 
+        }
+        h1, h2 { 
+            color: #1e3a5f; 
+        }
+        .grid {    
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+        }
+        .card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        input, select, button { 
+            padding: 8px 12px; 
+            margin: 5px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+        }
+        button { 
+            background: #1e3a5f; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+        }
+        button:hover { 
+            background: #2a4f7a; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        }
+        th {
+            background: #e9edf4; 
+        }
+        .badge {
+            background: #d4edda; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+        }
+        .danger { 
+    background: #f8d7da; 
+}
+
+.row { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; 
+}
