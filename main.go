@@ -9,8 +9,6 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-
-	_ "github.com/lib/pq"
 )
 
 var db *sql.DB
@@ -101,7 +99,6 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 func GalleryHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := getUserContext(r)
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	tmplGallery.Execute(w, ctx)
 }
 
