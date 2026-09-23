@@ -23,12 +23,20 @@
             <input type="text" id="matName" placeholder="Название" />
             <input type="text" id="matUnit" placeholder="Ед. изм. (шт/м/кг)" />
             <input type="number" id="matNorm" placeholder="Норма на изделие" step="0.01" />
+            <button onclick="addMaterial()">Добавить материал</button>
         </div>
-        <button onclick="addMaterial()">Добавить материал</button>
 
         <h3 style="margin-top: 25px;">Остатки</h3>
         <table id="materialsTable">
-            <thead><tr><th>Название</th><th>Ед.</th><th>Норма</th><th>Остаток</th><th>Действие</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Ед.</th>
+                    <th>Норма</th>
+                    <th>Остаток</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
             <tbody id="materialsBody"></tbody>
         </table>
     </div>
@@ -39,22 +47,34 @@
             <select id="spisMatSelect"></select>
             <input type="number" id="spisQty" placeholder="Количество" step="0.01" />
             <input type="text" id="spisReason" placeholder="Причина (опционально)" />
+            <button onclick="spisat()">Списать по акту</button>
         </div>
-        <button onclick="spisat()">Списать по акту</button>
 
         <h3 style="margin-top: 25px;">Акты списания</h3>
         <table id="actsTable">
-            <thead><tr><th>Дата</th><th>Материал</th><th>Кол-во</th><th>Причина</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Материал</th>
+                    <th>Кол-во</th>
+                    <th>Причина</th>
+                </tr>
+            </thead>
             <tbody id="actsBody"></tbody>
         </table>
+
+        <div class="row" style="margin-top: 15px;">
+            <button onclick="undoLastAct()" class="warn">↩ Отменить последнее списание</button>
+            <button onclick="exportActsCSV()" class="ok">⬇ Экспорт актов (CSV)</button>
+        </div>
     </div>
 
 </div>
 
 <div style="margin-top: 20px;">
-    <button onclick="resetAll()" style="background:#a94442;">Сбросить все данные</button>
+    <button onclick="resetAll()" class="danger-btn">🔄 Сбросить все данные</button>
 </div>
 
-<script src="js.js"></script> 
+<script src="js.js"></script>
 </body>
 </html>
