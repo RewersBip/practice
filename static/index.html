@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkShop Track — учёт материалов</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div>
+        <h1>WorkShop Track</h1>
+        <p>Учёт и контроль расходования материалов в учебной мастерской</p>
+    </div>
+    <nav class="topbar">
+        <a href="index.html" class="nav-link active">Материалы</a>
+        <a href="acts.html" class="nav-link">Акты</a>
+        <a href="reports.html" class="nav-link">Отчёты</a>
+        <a href="about.html" class="nav-link">О системе</a>
+        <a href="profile.html" class="btn">Войти</a>
+    </nav>
+</header>
+
+<div class="stats">
+    <div class="stat-card">
+        <span class="stat-label">Всего материалов</span>
+        <span class="stat-value" id="statTotal">0</span>
+    </div>
+    <div class="stat-card warn">
+        <span class="stat-label">Ниже нормы</span>
+        <span class="stat-value" id="statLow">0</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Актов списания</span>
+        <span class="stat-value" id="statActs">0</span>
+    </div>
+</div>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>Материалы</h2>
+
+        <div class="row">
+            <input type="text" id="matName" placeholder="Название" />
+            <input type="text" id="matUnit" placeholder="Ед. изм. (шт/м/кг)" />
+            <input type="number" id="matNorm" placeholder="Норма" step="0.01" />
+            <button onclick="addMaterial()">Добавить</button>
+        </div>
+
+        <div class="row" style="margin-top: 14px;">
+            <input type="text" id="searchInput" placeholder="Поиск по названию..." oninput="renderAll()" style="flex: 1;" />
+        </div>
+
+        <h3>Остатки</h3>
+        <table id="materialsTable">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Ед.</th>
+                    <th>Норма</th>
+                    <th>Остаток</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody id="materialsBody"></tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Списание</h2>
+        <div class="row">
+            <select id="spisMatSelect"></select>
+            <input type="number" id="spisQty" placeholder="Количество" step="0.01" />
+            <input type="text" id="spisReason" placeholder="Причина" />
+            <button onclick="spisat()">Списать</button>
+        </div>
+
+        <h3>Акты списания</h3>
+        <table id="actsTable">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Материал</th>
+                    <th>Кол-во</th>
+                    <th>Причина</th>
+                </tr>
+            </thead>
+            <tbody id="actsBody"></tbody>
+        </table>
+
+        <div class="row" style="margin-top: 14px;">
+            <button onclick="undoLastAct()" class="warn">↩ Отменить последнее</button>
+            <button onclick="exportActsCSV()" class="ok">⬇ Экспорт CSV</button>
+        </div>
+    </div>
+
+</div>
+
+<div style="margin-top: 24px;">
+    <button onclick="resetAll()" class="danger-btn">🔄 Сбросить все данные</button>
+</div>
+
+<footer style="margin-top: 32px; text-align: center; font-size: 13px; color: #9aa7b9; border-top: 1px solid #e3e8f0; padding-top: 18px;">
+    WorkShop Track · Учебная мастерская · 2026
+</footer>
+
+<div id="confirmModal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <h3 id="confirmTitle">Подтверждение</h3>
+        <p id="confirmText">Вы уверены?</p>
+        <div class="modal-actions">
+            <button id="confirmOkBtn" class="danger-btn">Да, удалить</button>
+            <button id="confirmCancelBtn">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<div id="noticeModal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <h3 id="noticeTitle">Уведомление</h3>
+        <p id="noticeText">Текст</p>
+        <div class="modal-actions">
+            <button id="noticeOkBtn">ОК</button>
+        </div>
+    </div>
+</div>
+
+<script src="js.js"></script>
+</body>
+</html>

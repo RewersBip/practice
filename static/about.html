@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>О системе — WorkShop Track</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div>
+        <h1>WorkShop Track</h1>
+        <p>Учёт и контроль расходования материалов в учебной мастерской</p>
+    </div>
+    <nav class="topbar">
+        <a href="index.html" class="nav-link">Материалы</a>
+        <a href="acts.html" class="nav-link">Акты</a>
+        <a href="reports.html" class="nav-link">Отчёты</a>
+        <a href="about.html" class="nav-link active">О системе</a>
+        <a href="profile.html" class="btn">Войти</a>
+    </nav>
+</header>
+
+<main class="about-page">
+
+    <section class="about-block">
+        <h2>Что это за система</h2>
+        <p>
+            <strong>WorkShop Track</strong> — это информационная система для учёта и контроля
+            расходования материалов в учебной мастерской. Она помогает вести прозрачный
+            учёт остатков, фиксировать списания и формировать отчётность.
+        </p>
+        <p>
+            Система разработана в рамках учебной практики по специальности
+            «Информационные системы и программирование» и представляет собой полноценное
+            веб-приложение с серверной частью, базой данных и клиентским интерфейсом.
+        </p>
+    </section>
+
+    <section class="about-block">
+        <h2>Какие задачи решает</h2>
+        <ul class="about-list">
+            <li>Ведение реестра материалов с указанием нормы расхода и остатка.</li>
+            <li>Фиксация списаний по актам с указанием причины и даты.</li>
+            <li>Контроль остатков и автоматическая подсветка позиций ниже нормы.</li>
+            <li>Поиск по материалам в реальном времени.</li>
+            <li>Экспорт актов списания в CSV для отчётности.</li>
+            <li>Разграничение доступа через регистрацию и вход.</li>
+            <li>Хранение данных в PostgreSQL, доступ с любого устройства.</li>
+            <li>Обмен данными между клиентом и сервером через REST API.</li>
+        </ul>
+    </section>
+
+    <section class="about-block">
+        <h2>Как это работает</h2>
+        <p>
+            Система построена по клиент-серверной архитектуре. Пользователь работает с
+            веб-интерфейсом, написанным на HTML, CSS и JavaScript. Все действия отправляются
+            на сервер через <strong>fetch API</strong> в формате JSON.
+        </p>
+        <p>
+            Серверная часть написана на языке <strong>Go</strong> и обрабатывает запросы к базе
+            данных <strong>PostgreSQL</strong>. Данные хранятся в трёх таблицах:
+            <em>materials</em> (материалы), <em>acts</em> (акты списания) и <em>users</em> (пользователи).
+        </p>
+        <p>
+            Все операции — добавление, редактирование, удаление, пополнение остатка и
+            списание по акту — выполняются через SQL-запросы и сохраняются в базе данных.
+            Это обеспечивает сохранность информации и доступ к ней с любого устройства.
+        </p>
+    </section>
+
+    <section class="about-block">
+        <h2>Для кого</h2>
+        <p>
+            Система предназначена для студентов, мастеров и преподавателей учебных мастерских,
+            а также для любых организаций, где ведётся учёт расходных материалов.
+        </p>
+    </section>
+
+    <section class="about-block">
+        <h2>Технологии</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <span class="tech-name">HTML5</span>
+                <span class="tech-desc">Семантическая вёрстка, формы, таблицы, модальные окна</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-name">CSS3</span>
+                <span class="tech-desc">Адаптив, Flexbox, Grid, анимации</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-name">JavaScript</span>
+                <span class="tech-desc">Клиентская логика, fetch API, работа с DOM</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-name">Go</span>
+                <span class="tech-desc">Серверная часть, HTTP-сервер, REST API</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-name">PostgreSQL</span>
+                <span class="tech-desc">Хранение данных, SQL-запросы, связи между таблицами</span>
+            </div>
+            <div class="tech-item">
+                <span class="tech-name">Git / GitHub</span>
+                <span class="tech-desc">Контроль версий, хранение проекта</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-block">
+        <h2>Структура базы данных</h2>
+        <p>
+            В базе данных <strong>workshoptrack</strong> используются три таблицы:
+        </p>
+        <ul class="about-list">
+            <li><strong>materials</strong> — id, name, unit, norm, balance.</li>
+            <li><strong>acts</strong> — id, material_id, qty, reason, created_at.</li>
+            <li><strong>users</strong> — id, username, email, password.</li>
+        </ul>
+        <p>
+            Таблица <em>acts</em> связана с таблицей <em>materials</em> через внешний ключ
+            <em>material_id</em>. Это обеспечивает целостность данных при удалении материала —
+            все связанные акты также удаляются.
+        </p>
+    </section>
+
+    <section class="about-block">
+        <h2>Основные возможности</h2>
+        <ul class="about-list">
+            <li>Добавление новых материалов с указанием нормы расхода.</li>
+            <li>Редактирование названия, единицы измерения и нормы.</li>
+            <li>Пополнение остатков материалов.</li>
+            <li>Списание материалов по актам с указанием причины.</li>
+            <li>Отмена последнего списания.</li>
+            <li>Просмотр журнала актов списания с датой и причиной.</li>
+            <li>Экспорт актов в CSV-файл.</li>
+            <li>Поиск по названию материала.</li>
+            <li>Статистика: всего материалов, ниже нормы, количество актов.</li>
+            <li>Регистрация и вход пользователей.</li>
+        </ul>
+    </section>
+
+    <section class="about-block">
+        <h2>Разработчик</h2>
+        <p>
+            Проект выполнен в рамках учебной практики по специальности
+            «Информационные системы и программирование».
+        </p>
+        <p class="about-signature">
+            Ахмаев Матвей Алексеевич · 2026
+        </p>
+    </section>
+
+</main>
+
+<footer style="margin-top: 32px; text-align: center; font-size: 13px; color: #9aa7b9; border-top: 1px solid #e3e8f0; padding-top: 18px;">
+    WorkShop Track · Учебная мастерская · 2026
+</footer>
+
+</body>
+</html>

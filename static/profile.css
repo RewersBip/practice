@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: #f4f5f7;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-card {
+    background: white;
+    border: 1px solid #e2e6ec;
+    border-radius: 8px;
+    padding: 40px 36px;
+    width: 420px;
+    max-width: 100%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color: #141414;
+    margin-bottom: 6px;
+}
+.logo span {
+    font-weight: 300;
+    color: #5f6b7a;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 28px;
+}
+
+.tabs {
+    position: relative;
+    display: flex;
+    background: #f4f5f7;
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 28px;
+}
+
+.slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: #1f2937;
+    border-radius: 4px;
+    transition: transform 0.25s ease;
+    z-index: 1;
+}
+
+.tabs[data-active="register"] .slider {
+    transform: translateX(100%);
+}
+
+.tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #5f6b7a;
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s ease;
+}
+
+.tab.active {
+    color: white;
+}
+
+.form-container {
+    transition: opacity 0.2s ease;
+}
+
+.form-container.hidden {
+    display: none;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: #fafbfc;
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+input:focus {
+    border-color: #5f6b7a;
+    background: white;
+}
+
+button.submit-btn {
+    background: #1f2937;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 0.15s;
+}
+
+button.submit-btn:hover {
+    background: #111827;
+}
+
+.message {
+    margin-top: 14px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 18px;
+    color: #6b7280;
+}
+
+.message.error {
+    color: #b91c1c;
+}
+
+.message.success {
+    color: #065f46;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.back-link a {
+    color: #5f6b7a;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px dashed #c0c8d4;
+    transition: color 0.15s;
+}
+
+.back-link a:hover {
+    color: #1f2937;
+}
